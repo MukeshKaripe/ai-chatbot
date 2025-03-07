@@ -12,7 +12,7 @@ const ChatWindow: React.FC = () => {
     setMessages([...messages, { text: message, sender: "user" }]);
 
     const botResponse = await getChatResponse(message);
-    setMessages([...messages, { text: message, sender: "user" }, { text: botResponse, sender: "bot" }]);
+    // setMessages([...messages, { text: message, sender: "user" }, { text: botResponse, sender: "bot" }]);
   };
 
   return (
