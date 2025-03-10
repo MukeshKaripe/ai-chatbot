@@ -7,8 +7,10 @@ interface ChatMessageProps {
 
 const ChatMessage: React.FC<ChatMessageProps> = ({ text, sender }) => {
   return (
-    <div className={`message ${sender}`}>
-      <p>{text}</p>
+    <div className={`message ${sender === "user" ? "user-message" : "bot-message"}`}>
+      <div className="message-content">
+        {text}
+      </div>
     </div>
   );
 };

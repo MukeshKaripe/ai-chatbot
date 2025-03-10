@@ -5,25 +5,26 @@ interface ChatInputProps {
 }
 
 const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage }) => {
-  const [input, setInput] = useState("");
+  const [message, setMessage] = useState("");
 
-  const handleSend = () => {
-    if (input.trim()) {
-      onSendMessage(input);
-      setInput("");
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (message.trim()) {
+      onSendMessage(message);
+      setMessage("");
     }
   };
 
   return (
-    <div className="chat-input">
+    <form className="chat-input" onSubmit={handleSubmit}>
       <input
         type="text"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="Type a message..."
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+        placeholder="Type your message..."
       />
-      <button onClick={handleSend}>Send</button>
-    </div>
+      <button type="submit">Send</button>
+    </form>
   );
 };
 
